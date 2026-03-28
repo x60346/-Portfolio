@@ -23,14 +23,26 @@ const skillList = [
   },
   {
     name: 'I18n',
-    type: 'Technique',
+    type: 'Basic',
+  },
+  {
+    name: 'Git',
+    type: 'Basic',
+  },
+  {
+    name: 'RWD',
+    type: 'Basic',
   },
   {
     name: 'Nuxt.js',
     type: 'Technique',
   },
   {
-    name: 'Git',
+    name: 'REST API',
+    type: 'Technique',
+  },
+  {
+    name: 'Firebase',
     type: 'Technique',
   },
   {
@@ -42,19 +54,23 @@ const skillList = [
     type: 'Technique',
   },
   {
-    name: 'Chrome Extension',
+    name: 'WebSocket',
     type: 'Technique',
   },
   {
-    name: 'Element UI',
-    type: 'UI Framework',
+    name: 'Cordova',
+    type: 'Technique',
+  },
+  {
+    name: 'Chrome Extension',
+    type: 'Technique',
   },
   {
     name: 'Tailwind CSS',
     type: 'UI Framework',
   },
   {
-    name: 'Bootstrap 5',
+    name: 'Element Plus',
     type: 'UI Framework',
   },
   {
@@ -62,17 +78,25 @@ const skillList = [
     type: 'UI Framework',
   },
   {
-    name: '系統企劃',
-    type: 'others',
+    name: 'Vuetify',
+    type: 'UI Framework',
   },
   {
-    name: '跨部門溝通',
-    type: 'others',
+    name: 'Bootstrap 5',
+    type: 'UI Framework',
   },
-  {
-    name: 'UI/UX',
-    type: 'others',
-  },
+  // {
+  //   name: '系統企劃',
+  //   type: 'Others',
+  // },
+  // {
+  //   name: '跨部門溝通',
+  //   type: 'Others',
+  // },
+  // {
+  //   name: 'UI/UX',
+  //   type: 'Others',
+  // },
 ];
 
 export const useSkillStore = defineStore('skill', {
