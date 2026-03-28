@@ -70,14 +70,24 @@
               <div class="card-title text-4xl flex gap-2">
                 Preview
                 <q-btn
+                  v-show="project.github"
                   class="ml-auto"
                   outline
                   rounded
                   color="secondary"
                   icon-right="open_in_new"
                   label="Github"
+                  @click="toGithub"
                 />
-                <q-btn unelevated rounded color="primary" icon-right="open_in_new" label="Demo" />
+                <q-btn
+                  v-show="project.demo"
+                  unelevated
+                  rounded
+                  color="primary"
+                  icon-right="open_in_new"
+                  label="Demo"
+                  @click="toDemo"
+                />
               </div>
             </q-card-section>
           </q-card>
@@ -124,6 +134,13 @@ const project = ref({
   focus: false,
 });
 
+const toGithub = () => {
+  window.open(project.value.github, `${project.value.title}-github`);
+};
+const toDemo = () => {
+  window.open(project.value.demo, `${project.value.demo}-github`);
+};
+
 onMounted(() => {
   if (projectStore.getProjectList(route.params.id).length) {
     project.value = projectStore.getProjectList(route.params.id)[0];
@@ -133,7 +150,7 @@ onMounted(() => {
 <style lang="scss">
 @media screen and (min-width: 768px) {
   .screen-preview {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 @media screen and (max-width: 767.99px) {

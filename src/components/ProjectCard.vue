@@ -8,7 +8,8 @@
   >
     <q-card-section horizontal class="">
       <!-- 圖片 -->
-      <q-img class="h-60 min-w-32" :src="project.cover" loading="lazy"> </q-img>
+      <q-img class="h-60 min-w-32 max-w-56 overflow-hidden" :src="project.cover" loading="lazy">
+      </q-img>
       <!-- 標題 & 說明文字 -->
       <q-card-section class="card-title text-2xl flex flex-col gap-1">
         <div>
@@ -70,6 +71,7 @@
             outline
             rounded
             color="primary"
+            icon-right="chevron_right"
             label="View More"
             @click="router.push({ path: `/project/${project.title}` })"
           />

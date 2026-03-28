@@ -5,7 +5,7 @@
         class="mx-auto max-w-[1024px] w-full border-t-0 rounded-none flex flex-col gap-4 box-border"
       >
         <div>
-          <CardTitle :title="'Lorem ipsum'" :content="'Lorem ipsum dolor sit amet'" />
+          <CardTitle :title="'Side Project'" :content="'點擊下方按鈕可快速篩選結果'" />
 
           <q-card flat>
             <q-card-section class="card-text flex gap-2">
