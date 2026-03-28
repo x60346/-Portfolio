@@ -2,7 +2,7 @@
   <q-layout :view="'hHh LpR lFr'" class="Bg-brown-1">
     <q-header
       elevated
-      class="header pt-3 overflow-hidden backdrop-blur-md"
+      class="header pt-2 overflow-hidden backdrop-blur-md"
       :class="{
         'bg-emerald-100': headerBG === 'green' && !$q.dark.isActive,
         'bg-blue-100': headerBG === 'blue' && !$q.dark.isActive,
@@ -14,7 +14,7 @@
       <q-toolbar class="mx-auto max-w-[1024px]">
         <q-toolbar-title class="flex gap-2">
           <div
-            class="title py-1 px-8 rounded-t-md text-base flex items-center gap-6 cursor-pointer"
+            class="title py-2 px-8 rounded-t-md text-sm flex items-center gap-6 cursor-pointer border-r-2 border-green-800"
             @mouseenter="changeHeaderBG('green')"
             @mouseleave="changeHeaderBG(null)"
           >
@@ -22,8 +22,8 @@
               <q-icon color="green-10" size="sm" name="fa-solid fa-house" />
             </div>
             <div>
-              <div class="text-lg font-bold">Quasar</div>
-              <div>Framework</div>
+              <div class="mb-[-4px] text-base font-bold">張宗芸 / Anita Chang</div>
+              <div>Frontend Engineer / Healthcare HIS</div>
             </div>
           </div>
           <div
@@ -165,17 +165,17 @@ const toggleDarkMode = () => {
 // 列表
 const essentialLinkList = ref([
   {
-    title: 'home',
+    title: 'Home',
     link: 'home',
     icon: 'home',
   },
   {
-    title: 'project',
+    title: 'Side Project',
     link: 'project',
     icon: 'folder',
   },
   {
-    title: 'timeline',
+    title: 'Work Experience',
     link: 'timeline',
     icon: 'timeline',
   },
