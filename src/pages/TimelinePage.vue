@@ -5,7 +5,7 @@
     >
       <!-- timeline -->
       <div>
-        <CardTitle :title="'Lorem ipsum'" :content="'Lorem ipsum dolor sit amet'" />
+        <CardTitle :title="'Work Experience'" :content="'從手遊到醫療工程師'" />
         <div class="mx-2 flex flex-col gap-2">
           <TimelineCard v-for="t in timelineList" :key="t.company" :timeline="t" :point="true" />
         </div>
