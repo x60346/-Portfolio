@@ -15,18 +15,18 @@
     background-color: white;
   }
   .header {
-    color: $green-10;
+    color: $teal-10;
   }
   .card-title {
-    color: $teal-8;
+    color: $teal-10;
     font-weight: bold;
   }
   .card-subtitle {
-    color: $teal-7;
+    color: $teal-9;
     font-weight: bold;
   }
   .card-text {
-    color: $teal-9;
+    color: $teal-10;
   }
 }
 .body--dark {
@@ -34,14 +34,14 @@
     background-color: black;
   }
   .title {
-    background-color: black;
+    background-color: #1d1d1d;
     border: 1px solid $green-10;
     border-bottom: 0;
   }
   .subtitle {
-    background-color: black;
-    border: 1px solid $green-10;
-    border-width: 1px 0;
+    background-color: #1d1d1d;
+    // border: 1px solid $green-10;
+    // border-width: 1px 0;
   }
   .header {
     color: white;
