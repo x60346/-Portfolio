@@ -4,20 +4,33 @@
     <q-card class="pb-4 w-full border-t-0 rounded-none" flat>
       <div class="screen-myself mx-auto max-w-[1024px] grid">
         <div>
-          <q-card-section class="pb-2">
-            <div class="card-title text-4xl">Lorem ipsum</div>
+          <q-card-section class="pb-0">
+            <div class="card-title text-3xl">張宗芸 / Anita Chang</div>
           </q-card-section>
 
-          <q-card-section class="card-subtitle pt-0 text-base">
-            Lorem ipsum dolor sit amet
+          <q-card-section class="card-subtitle py-0 text-base">
+            Frontend Engineer / Healthcare HIS
           </q-card-section>
 
-          <q-separator inset />
+          <!-- <q-separator inset /> -->
 
-          <q-card-section class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <q-card-section class="card-text pb-2 text-base">
+            <div class="flex gap-2 items-center">
+              <q-icon color="orange-8" size="xs" name="fa-solid fa-check" />1 年以上 前端工程師 與 5
+              年 RWD 切版經驗，擅長團隊協作
+            </div>
+            <div class="flex gap-2 items-center">
+              <q-icon size="xs" name="fa-solid fa-check" />使用
+              <span class="text-orange-600">Vue3</span>／ Element Plus 、 Quasar 、 Tailwind CSS
+            </div>
+            <div class="flex gap-2 items-center">
+              <q-icon size="xs" name="fa-solid fa-check" />
+              具備
+              <span class="text-orange-600">後台會員系統</span>
+              、簡化複雜表單、
+              <span class="text-orange-600">WebSocket</span>
+              、 PWA 、 Jitsi Meet 經歷
+            </div>
           </q-card-section>
         </div>
       </div>
@@ -27,7 +40,7 @@
     >
       <!-- skill -->
       <div>
-        <CardTitle :title="'Lorem ipsum'" :content="'Lorem ipsum dolor sit amet'" />
+        <CardTitle :title="'Skill Tree'" :content="'我在實際專案中使用過的技能與工具'" />
         <div class="screen-skill mx-2 grid gap-2">
           <SkillCard v-for="s in skillType" :key="s" :type="s" :skill="skillList" />
         </div>
@@ -35,7 +48,7 @@
 
       <!-- project -->
       <div class="w-full">
-        <CardTitle :title="'Lorem ipsum'" :content="'Lorem ipsum dolor sit amet'" />
+        <CardTitle :title="'Side Project'" :content="'均具備RWD響應式功能'" />
         <div class="mx-2 pb-2 flex flex-nowrap gap-2 overflow-x-scroll">
           <ProjectCard
             class="w-[550px] min-w-[550px]"
@@ -70,7 +83,7 @@
 
       <!-- timeline -->
       <div>
-        <CardTitle :title="'Lorem ipsum'" :content="'Lorem ipsum dolor sit amet'" />
+        <CardTitle :title="'Work Experience'" :content="'從手遊到醫療工程師'" />
         <div class="mx-2 flex flex-col gap-2">
           <TimelineCard v-for="t in timelineList" :key="t.company" :timeline="t" :point="false" />
         </div>
@@ -128,10 +141,9 @@ onMounted(() => {
 
 @media screen and (min-width: 768px) {
   .screen-skill {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .screen-myself {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .screen-project-btn {
     display: none;
