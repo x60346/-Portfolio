@@ -1,0 +1,49 @@
+// app global css in SCSS form
+// @import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.body--light {
+  .Bg-brown-1 {
+    background-color: $brown-1;
+  }
+  .title {
+    background-color: white;
+  }
+  .subtitle {
+    background-color: white;
+  }
+  .header {
+    color: $green-10;
+  }
+  .card-title {
+    color: $teal-8;
+    font-weight: bold;
+  }
+  .card-subtitle {
+    color: $teal-7;
+    font-weight: bold;
+  }
+  .card-text {
+    color: $teal-9;
+  }
+}
+.body--dark {
+  .Bg-brown-1 {
+    background-color: black;
+  }
+  .title {
+    background-color: black;
+    border: 1px solid $green-10;
+    border-bottom: 0;
+  }
+  .subtitle {
+    background-color: black;
+    border: 1px solid $green-10;
+    border-width: 1px 0;
+  }
+  .header {
+    color: white;
+  }
+}

@@ -1,0 +1,143 @@
+<template>
+  <q-page class="Bg-brown-1 flex flex-col flex-nowrap justify-start items-center gap-4">
+    <div
+      class="mx-auto max-w-[1024px] w-full border-t-0 rounded-none flex flex-col gap-4 box-border"
+    >
+      <!-- timeline -->
+      <div>
+        <q-card class="bg-transparent" flat>
+          <q-card-section class="pb-0">
+            <q-btn
+              unelevated
+              rounded
+              color="primary"
+              icon="chevron_left"
+              label="Back"
+              @click="router.back()"
+            />
+          </q-card-section>
+          <q-card-section class="pb-2">
+            <div class="card-title text-4xl">{{ project.title }}</div>
+          </q-card-section>
+
+          <q-card-section class="card-text pt-0 text-base">
+            {{ project.content }}
+          </q-card-section>
+        </q-card>
+        <div class="mx-2 flex flex-col gap-2">
+          <!-- what i did -->
+          <q-card class="pb-4 w-full border-t-0 rounded-none" flat>
+            <div class="screen-myself mx-auto max-w-[1024px] grid">
+              <div>
+                <q-card-section class="pb-2">
+                  <div class="card-title text-3xl">What I Did</div>
+                </q-card-section>
+
+                <q-card-section
+                  v-for="w in project.whatIDid"
+                  :key="w"
+                  class="card-text py-0 text-lg"
+                >
+                  <p><span> - </span>{{ w }}</p>
+                </q-card-section>
+              </div>
+            </div>
+          </q-card>
+          <!-- Technologles Used -->
+          <q-card class="pb-4 w-full border-t-0 rounded-none" flat>
+            <div class="screen-myself mx-auto max-w-[1024px] grid">
+              <div>
+                <q-card-section class="pb-2">
+                  <div class="card-title text-3xl">Technologles Used</div>
+                </q-card-section>
+
+                <q-card-section class="py-2 card-text flex gap-2">
+                  <q-btn
+                    v-for="s in project.skill"
+                    :key="s"
+                    outline
+                    rounded
+                    color="primary"
+                    :label="s"
+                  />
+                </q-card-section>
+              </div>
+            </div>
+          </q-card>
+          <!-- Preview -->
+          <q-card class="bg-transparent" flat>
+            <q-card-section class="pb-2">
+              <div class="card-title text-4xl flex gap-2">
+                Preview
+                <q-btn
+                  class="ml-auto"
+                  outline
+                  rounded
+                  color="secondary"
+                  icon-right="open_in_new"
+                  label="Github"
+                />
+                <q-btn unelevated rounded color="primary" icon-right="open_in_new" label="Demo" />
+              </div>
+            </q-card-section>
+          </q-card>
+          <div class="screen-preview grid gap-2">
+            <q-card v-for="p in project.preview" :key="p.discribe" flat>
+              <q-card-section class="">
+                <q-img class="h-56" :src="p.src" loading="lazy"> </q-img>
+                <q-card-section class="card-text pb-0 px-0 text-base font-normal">
+                  {{ p.discribe }}
+                </q-card-section>
+              </q-card-section>
+            </q-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </q-page>
+</template>
+
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
+const router = useRouter();
+const route = useRoute();
+// store
+import { useProjectStore } from 'src/stores/project';
+const projectStore = useProjectStore();
+
+const project = ref({
+  title: '',
+  cover: '',
+  content: '',
+  whatIDid: [''],
+  skill: [''],
+  preview: [
+    {
+      src: '',
+      discribe: '',
+    },
+  ],
+  github: '',
+  demo: '',
+  focus: false,
+});
+
+onMounted(() => {
+  if (projectStore.getProjectList(route.params.id).length) {
+    project.value = projectStore.getProjectList(route.params.id)[0];
+  }
+});
+</script>
+<style lang="scss">
+@media screen and (min-width: 768px) {
+  .screen-preview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media screen and (max-width: 767.99px) {
+  .screen-preview {
+  }
+}
+</style>

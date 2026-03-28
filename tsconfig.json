@@ -1,0 +1,10 @@
+{
+  "extends": "./.quasar/tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "strict": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "exactOptionalPropertyTypes": false
+  }
+}
