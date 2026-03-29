@@ -1,10 +1,13 @@
 import { defineStore } from 'pinia';
+import { i18n } from 'src/boot/i18n';
+import { computed } from 'vue';
+const t = i18n.global.t;
 
-const timeLineList = [
+const timeLineList = computed(() => [
   {
     startDate: 'Apr 2025',
-    endDate: '現在',
-    company: '合華科技',
+    endDate: t('store.timeline.timeline01.endDate'),
+    company: t('store.timeline.timeline01.company'),
     position: 'RD 前端工程師',
     content:
       '公司當前首要醫療資訊系統開發，優化系統使用流程、管理後台設定。<br/>客製化 UI/UX。<br/>與團隊協作完成多個案子。',
@@ -39,13 +42,16 @@ const timeLineList = [
     point: ['劇情規劃設計、遊戲包裝。', '溝通美術及企劃部門，完善角色劇情與活動設計。'],
     focus: false,
   },
-];
+]);
 
 export const useTimeLineStore = defineStore('timeLine', {
   state: () => ({
-    timeLineList: JSON.parse(JSON.stringify(timeLineList)),
+    timeLineList: JSON.parse(JSON.stringify(timeLineList.value)),
   }),
   actions: {
+    getTimeLineList() {
+      this.timeLineList = JSON.parse(JSON.stringify(timeLineList.value));
+    },
     setTimeLineList(data) {
       this.timeLineList.push(data);
     },

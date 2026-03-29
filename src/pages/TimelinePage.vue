@@ -15,15 +15,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 // store
 import { useTimeLineStore } from 'src/stores/timeline';
 const timelineStore = useTimeLineStore();
 // componenet
 import CardTitle from 'src/components/CardTitle.vue';
 import TimelineCard from 'src/components/TimelineCard.vue';
-const timelineList = ref([]);
-onMounted(() => {
-  timelineList.value = timelineStore.timeLineList;
-});
+// i18n
+import { useI18n } from 'vue-i18n';
+import { nextTick } from 'process';
+const { t, locale } = useI18n();
+
+const timelineList = computed(() => timelineStore.timeLineList);
+
+watch(
+  () => locale.value,
+  () => {
+    timelineStore.getTimeLineList();
+  },
+);
 </script>

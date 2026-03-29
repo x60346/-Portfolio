@@ -5,7 +5,7 @@
       <div class="screen-myself mx-auto max-w-[1024px] grid">
         <div>
           <q-card-section class="pb-2">
-            <div class="card-title text-3xl">張宗芸 / Anita Chang</div>
+            <div class="card-title text-3xl">{{ t('store.indexPage.title') }}</div>
           </q-card-section>
 
           <q-card-section class="card-subtitle screen-index-career text-base py-0">
@@ -113,6 +113,9 @@ import ProjectCard from 'src/components/ProjectCard.vue';
 import CardTitle from 'src/components/CardTitle.vue';
 import TimelineCard from 'src/components/TimelineCard.vue';
 import SkillCard from 'src/components/SkillCard.vue';
+// i18n
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
 
 const projectList = ref([]);
 const timelineList = ref([]);
