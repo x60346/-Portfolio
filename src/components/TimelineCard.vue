@@ -25,7 +25,7 @@
         v-show="point"
         v-for="(p, index) in timelineClone.point"
         :key="index"
-        class="card-text py-0 text-base flex items-center gap-2"
+        class="card-text py-0 text-base flex items-start flex-nowrap gap-2"
       >
         <span> - </span>
         <p v-html="p"></p>

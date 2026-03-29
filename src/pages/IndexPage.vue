@@ -4,32 +4,37 @@
     <q-card class="pb-4 w-full border-t-0 rounded-none" flat>
       <div class="screen-myself mx-auto max-w-[1024px] grid">
         <div>
-          <q-card-section class="pb-0">
+          <q-card-section class="pb-2">
             <div class="card-title text-3xl">張宗芸 / Anita Chang</div>
           </q-card-section>
 
-          <q-card-section class="card-subtitle py-0 text-base">
+          <q-card-section class="card-subtitle screen-index-career text-base py-0">
             Frontend Engineer / Healthcare HIS
           </q-card-section>
 
           <!-- <q-separator inset /> -->
 
           <q-card-section class="card-text pb-2 text-base">
-            <div class="flex gap-2 items-center">
-              <q-icon color="orange-8" size="xs" name="fa-solid fa-check" />1 年以上 前端工程師 與 5
-              年 RWD 切版經驗，擅長團隊協作
+            <div class="flex gap-2 items-start flex-nowrap">
+              <q-icon class="mt-1" color="orange-8" size="xs" name="fa-solid fa-check" />
+              <p>1 年以上 前端工程師 與 5 年 RWD 切版經驗，擅長團隊協作</p>
             </div>
-            <div class="flex gap-2 items-center">
-              <q-icon size="xs" name="fa-solid fa-check" />使用
-              <span class="text-orange-600">Vue3</span>／ Element Plus 、 Quasar 、 Tailwind CSS
+            <div class="flex gap-2 items-start flex-nowrap">
+              <q-icon class="mt-1" size="xs" name="fa-solid fa-check" />
+              <p>
+                使用 <span class="text-orange-600">Vue3</span>／ Element Plus 、 Quasar 、 Tailwind
+                CSS
+              </p>
             </div>
-            <div class="flex gap-2 items-center">
-              <q-icon size="xs" name="fa-solid fa-check" />
-              具備
-              <span class="text-orange-600">後台會員系統</span>
-              、簡化複雜表單、
-              <span class="text-orange-600">WebSocket</span>
-              、 PWA 、 Jitsi Meet 經歷
+            <div class="flex gap-2 items-start flex-nowrap">
+              <q-icon class="mt-1" size="xs" name="fa-solid fa-check" />
+              <p>
+                具備
+                <span class="text-orange-600">後台會員系統</span>
+                、簡化複雜表單、
+                <span class="text-orange-600">WebSocket</span>
+                、 PWA 、 Lighthouse 經歷
+              </p>
             </div>
           </q-card-section>
         </div>
@@ -162,6 +167,9 @@ onMounted(() => {
   }
   .screen-project-skill {
     display: none;
+  }
+  .screen-index-name {
+    margin-top: 0.5rem;
   }
 }
 </style>

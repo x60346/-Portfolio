@@ -11,7 +11,7 @@
       <q-img class="h-60 min-w-32 max-w-56 overflow-hidden" :src="project.cover" loading="lazy">
       </q-img>
       <!-- 標題 & 說明文字 -->
-      <q-card-section class="card-title text-2xl flex flex-col gap-1">
+      <q-card-section class="card-title screen-project-gap text-2xl flex flex-col">
         <div>
           {{ project.title }}
         </div>
@@ -113,6 +113,9 @@ const projectClone = ref(JSON.parse(JSON.stringify(props.project)));
   }
   .screen-project-skill {
     display: flex;
+  }
+  .screen-project-gap {
+    gap: 1rem;
   }
 }
 @media screen and (max-width: 767.99px) {

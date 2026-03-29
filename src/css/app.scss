@@ -8,6 +8,10 @@
   .Bg-brown-1 {
     background-color: $brown-1;
   }
+  .mydrawer {
+    background-color: white;
+    color: $teal-10;
+  }
   .title {
     background-color: white;
   }
@@ -33,6 +37,10 @@
   .Bg-brown-1 {
     background-color: black;
   }
+  .mydrawer {
+    background-color: black;
+    color: white;
+  }
   .title {
     background-color: #1d1d1d;
     border: 1px solid $green-10;
@@ -46,4 +54,8 @@
   .header {
     color: white;
   }
+}
+
+.q-toolbar {
+  min-height: auto;
 }

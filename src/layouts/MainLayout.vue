@@ -12,22 +12,22 @@
       }"
     >
       <q-toolbar class="mx-auto max-w-[1024px]">
-        <q-toolbar-title class="flex gap-2">
+        <q-toolbar-title class="flex gap-2 flex-nowrap">
           <div
-            class="title py-2 px-8 rounded-t-md text-sm flex items-center gap-6 cursor-pointer border-r-2 border-green-800"
+            class="screen-header-btn title py-2 px-8 rounded-t-md text-sm flex items-center gap-6 cursor-pointer border-r-2 border-green-800"
             @mouseenter="changeHeaderBG('green')"
             @mouseleave="changeHeaderBG(null)"
           >
             <div>
               <q-icon color="green-10" size="sm" name="fa-solid fa-house" />
             </div>
-            <div>
+            <div class="screen-header-btn">
               <div class="mb-[-4px] text-base font-bold">張宗芸 / Anita Chang</div>
               <div>Frontend Engineer / Healthcare HIS</div>
             </div>
           </div>
           <div
-            class="py-2 px-4 flex justify-center items-center cursor-pointer relative"
+            class="screen-header-btn py-2 px-4 flex justify-center items-center cursor-pointer relative"
             @mouseenter="changeHeaderBG('blue')"
             @mouseleave="changeHeaderBG(null)"
           >
@@ -43,7 +43,7 @@
             <q-tooltip class="text-body2"> Github </q-tooltip>
           </div>
           <div
-            class="py-2 px-4 flex justify-center items-center cursor-pointer relative"
+            class="screen-header-btn py-2 px-4 flex justify-center items-center cursor-pointer relative"
             @mouseenter="changeHeaderBG('orange')"
             @mouseleave="changeHeaderBG(null)"
           >
@@ -58,8 +58,24 @@
             <q-icon color="orange-8" size="md" name="fa-solid fa-receipt" />
             <q-tooltip class="text-body2"> Cake </q-tooltip>
           </div>
+
+          <!-- <div
+            class="title py-2 px-8 rounded-t-md text-sm flex items-center gap-6 cursor-pointer border-r-2 border-green-800"
+          >
+            <div>
+              <div class="mb-[-4px] text-base font-bold">張宗芸 / Anita Chang</div>
+              <div>Frontend Engineer / Healthcare HIS</div>
+            </div>
+          </div> -->
+          <!-- 側選單開關 -->
+          <div
+            class="phone-header-btn ml-auto pt-2 pb-3 flex justify-center items-center cursor-pointer relative"
+            @click="toggleRightDrawer"
+          >
+            <q-icon size="md" name="fa-solid fa-bars" />
+          </div>
         </q-toolbar-title>
-        <div class="mr-2 h-4/5">
+        <div class="screen-header-btn mr-2">
           <q-btn-dropdown stretch flat :label="nowLang">
             <q-list>
               <q-item
@@ -77,8 +93,8 @@
             </q-list>
           </q-btn-dropdown>
         </div>
-
         <q-btn
+          class="screen-header-btn"
           flat
           round
           dense
@@ -91,29 +107,85 @@
         </q-btn>
       </q-toolbar>
       <q-toolbar class="subtitle rounded-b-sm">
-        <q-toolbar-title class="mx-auto my-2 max-w-[1024px] flex gap-8">
+        <q-toolbar-title class="screen-header-subtoolbar mx-auto max-w-[1024px] flex">
           <Essential-link
             v-for="e in essentialLinkList"
             :key="e.link"
             :title="e.title"
             :link="e.link"
+            :icon="e.icon"
           ></Essential-link>
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
-    <!-- <q-drawer class="Bg-brown-1" v-model="leftDrawerOpen" show-if-above bordered>
+    <q-drawer
+      v-if="Screen.width < 768"
+      class="mydrawer phone-header-btn"
+      v-model="rightDrawerOpen"
+      side="right"
+      show-if-above
+      bordered
+    >
       <q-list>
-        <q-item-label header> 頁面列表 </q-item-label>
-        <Essential-link
+        <q-item-label class="flex justify-end items-center" header>
+          <div class="mr-2">
+            <q-btn-dropdown class="mydrawer" stretch flat :label="nowLang">
+              <q-list>
+                <q-item
+                  v-for="l in langList"
+                  :key="l.value"
+                  clickable
+                  v-close-popup
+                  tabindex="0"
+                  @click="changeLang(l)"
+                >
+                  <q-item-section>
+                    <q-item-label>{{ l.label }}</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-btn-dropdown>
+          </div>
+          <q-btn
+            class="mydrawer"
+            flat
+            round
+            dense
+            :icon="$q.dark.isActive ? 'dark_mode' : 'light_mode'"
+            @click="toggleDarkMode"
+          >
+            <q-tooltip class="text-body2">
+              {{ $q.dark.isActive ? 'Lightmode' : 'Darkmode' }}
+            </q-tooltip>
+          </q-btn>
+        </q-item-label>
+        <q-item clickable>
+          <q-item-section>
+            <q-item-label class="text-lg flex flex-nowrap gap-2 items-center">
+              <q-icon color="blue-8" size="sm" name="fa-brands fa-github" />
+              <div class="">Github</div>
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable>
+          <q-item-section>
+            <q-item-label class="text-lg flex flex-nowrap gap-2 items-center">
+              <q-icon color="orange-8" size="sm" name="fa-solid fa-receipt" />
+              <div class="">Cake Resume</div>
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <!-- <Essential-link
           v-for="e in essentialLinkList"
           :key="e.link"
           :title="e.title"
           :link="e.link"
           :icon="e.icon"
-        ></Essential-link>
+        ></Essential-link> -->
       </q-list>
-    </q-drawer> -->
+    </q-drawer>
 
     <q-page-container>
       <router-view class="pb-8" />
@@ -124,7 +196,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useQuasar } from 'quasar';
+import { Screen, useQuasar } from 'quasar';
 import EssentialLink from 'src/components/EssentialLink.vue';
 
 const { t, locale } = useI18n();
@@ -135,7 +207,7 @@ const leftDrawerOpen = ref(true);
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
-const rightDrawerOpen = ref(true);
+const rightDrawerOpen = ref(false);
 function toggleRightDrawer() {
   rightDrawerOpen.value = !rightDrawerOpen.value;
 }
@@ -192,14 +264,30 @@ onMounted(() => {
 });
 </script>
 <style lang="scss">
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .header {
     border-radius: 0.2rem;
   }
+  .screen-header-subtoolbar {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    gap: 2rem;
+  }
+  .phone-header-btn {
+    display: none;
+  }
 }
-@media screen and (max-width: 1023.99px) {
+@media screen and (max-width: 767.99px) {
   .header {
     border-radius: 0;
+  }
+  .screen-header-btn {
+    display: none;
+  }
+  .screen-header-subtoolbar {
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    overflow: auto;
   }
 }
 </style>
