@@ -30,7 +30,7 @@
             <div class="screen-myself mx-auto max-w-[1024px] grid">
               <div>
                 <q-card-section class="pb-2">
-                  <div class="card-title text-3xl">What I Did</div>
+                  <div class="card-title text-3xl">{{ t('page.projectInfo.whatIDid') }}</div>
                 </q-card-section>
 
                 <q-card-section
@@ -48,7 +48,9 @@
             <div class="screen-myself mx-auto max-w-[1024px] grid">
               <div>
                 <q-card-section class="pb-2">
-                  <div class="card-title text-3xl">Technologles Used</div>
+                  <div class="card-title text-3xl">
+                    {{ t('page.projectInfo.technologlesUsed') }}
+                  </div>
                 </q-card-section>
 
                 <q-card-section class="py-2 card-text flex gap-2">
@@ -108,7 +110,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router';
 const router = useRouter();
@@ -116,8 +118,12 @@ const route = useRoute();
 // store
 import { useProjectStore } from 'src/stores/project';
 const projectStore = useProjectStore();
+// i18n
+import { useI18n } from 'vue-i18n';
+const { t, locale } = useI18n();
 
 const project = ref({
+  id: '',
   title: '',
   cover: '',
   content: '',
@@ -133,6 +139,13 @@ const project = ref({
   demo: '',
   focus: false,
 });
+watch(
+  () => locale.value,
+  () => {
+    projectStore.getProjectList();
+    project.value = projectStore.getProject(route.params.id)[0];
+  },
+);
 
 const toGithub = () => {
   window.open(project.value.github, `${project.value.title}-github`);
@@ -142,8 +155,8 @@ const toDemo = () => {
 };
 
 onMounted(() => {
-  if (projectStore.getProjectList(route.params.id).length) {
-    project.value = projectStore.getProjectList(route.params.id)[0];
+  if (projectStore.getProject(route.params.id).length) {
+    project.value = projectStore.getProject(route.params.id)[0];
   }
 });
 </script>

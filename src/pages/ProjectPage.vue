@@ -5,7 +5,10 @@
         class="mx-auto max-w-[1024px] w-full border-t-0 rounded-none flex flex-col gap-4 box-border"
       >
         <div>
-          <CardTitle :title="'Side Project'" :content="'點擊下方按鈕可快速篩選結果'" />
+          <CardTitle
+            :title="t('components.cardTitle.cardTitle04.title')"
+            :content="t('components.cardTitle.cardTitle04.content')"
+          />
 
           <q-card flat>
             <q-card-section class="card-text flex gap-2">
@@ -46,7 +49,7 @@
       <div class="w-full">
         <q-card class="bg-transparent" flat>
           <q-card-section class="card-text text-base">
-            {{ chooseProjectList.length }} projects
+            {{ chooseProjectList.length }} {{ t('page.projectPage.count') }}
           </q-card-section>
         </q-card>
         <div class="screen-project mx-2 pb-2 grid gap-2">
@@ -58,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 // store
@@ -67,9 +70,28 @@ const projectStore = useProjectStore();
 // componenet
 import projectCard from 'src/components/ProjectCard.vue';
 import CardTitle from 'src/components/CardTitle.vue';
+// i18n
+import { useI18n } from 'vue-i18n';
+const { t, locale } = useI18n();
 
-const skillList = ref([]); // 專案內含skill
-const projectList = ref([]); //所有專案
+// 專案內含skill
+const skillList = ref([]);
+//所有專案
+const projectList = computed(() => projectStore.projectList);
+// 所有技能
+const allSkill = computed(() => {
+  return projectList.value.map((item) => {
+    return item.skill;
+  });
+});
+watch(allSkill, (val) => {
+  skillList.value = [...new Set(val.flat())].map((item) => {
+    return {
+      label: item,
+      select: false,
+    };
+  });
+});
 const chooseList = computed(() => {
   // 選擇 - skill
   return skillList.value.filter((item) => item?.select === true).map((item) => item.label);
@@ -90,14 +112,14 @@ const chooseProjectList = computed(() => {
     });
   }
 });
+watch(
+  () => locale.value,
+  () => {
+    projectStore.getProjectList();
+  },
+);
 onMounted(() => {
-  // 所有專案
-  projectList.value = projectStore.projectList;
-  // 專案內含 skill
-  const allSkill = projectList.value.map((item) => {
-    return item.skill;
-  });
-  skillList.value = [...new Set(allSkill.flat())].map((item) => {
+  skillList.value = [...new Set(allSkill.value.flat())].map((item) => {
     return {
       label: item,
       select: false,

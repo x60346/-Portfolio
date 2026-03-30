@@ -5,11 +5,11 @@
       <div class="screen-myself mx-auto max-w-[1024px] grid">
         <div>
           <q-card-section class="pb-2">
-            <div class="card-title text-3xl">{{ t('store.indexPage.title') }}</div>
+            <div class="card-title text-3xl">{{ t('page.indexPage.title') }}</div>
           </q-card-section>
 
           <q-card-section class="card-subtitle screen-index-career text-base py-0">
-            Frontend Engineer / Healthcare HIS
+            {{ t('page.indexPage.position') }}
           </q-card-section>
 
           <!-- <q-separator inset /> -->
@@ -17,23 +17,24 @@
           <q-card-section class="card-text pb-2 text-base">
             <div class="flex gap-2 items-start flex-nowrap">
               <q-icon class="mt-1" color="orange-8" size="xs" name="fa-solid fa-check" />
-              <p>1 年以上 前端工程師 與 5 年 RWD 切版經驗，擅長團隊協作</p>
+              <p>{{ t('page.indexPage.intro.intro01') }}</p>
             </div>
             <div class="flex gap-2 items-start flex-nowrap">
               <q-icon class="mt-1" size="xs" name="fa-solid fa-check" />
               <p>
-                使用 <span class="text-orange-600">Vue3</span>／ Element Plus 、 Quasar 、 Tailwind
-                CSS
+                {{ t('page.indexPage.intro.intro02.first') }}
+                <span class="text-orange-600">{{ t('page.indexPage.intro.intro02.second') }}</span
+                >{{ t('page.indexPage.intro.intro02.third') }}
               </p>
             </div>
             <div class="flex gap-2 items-start flex-nowrap">
               <q-icon class="mt-1" size="xs" name="fa-solid fa-check" />
               <p>
-                具備
-                <span class="text-orange-600">後台會員系統</span>
-                、簡化複雜表單、
-                <span class="text-orange-600">WebSocket</span>
-                、 PWA 、 Lighthouse 經歷
+                {{ t('page.indexPage.intro.intro03.first') }}
+                <span class="text-orange-600">{{ t('page.indexPage.intro.intro03.second') }}</span>
+                {{ t('page.indexPage.intro.intro03.third') }}
+                <span class="text-orange-600">{{ t('page.indexPage.intro.intro03.forth') }}</span>
+                {{ t('page.indexPage.intro.intro03.fifth') }}
               </p>
             </div>
           </q-card-section>
@@ -45,7 +46,10 @@
     >
       <!-- skill -->
       <div>
-        <CardTitle :title="'Skill Tree'" :content="'我在實際專案中使用過的技能與工具'" />
+        <CardTitle
+          :title="t('components.cardTitle.cardTitle01.title')"
+          :content="t('components.cardTitle.cardTitle01.content')"
+        />
         <div class="screen-skill mx-2 grid gap-2">
           <SkillCard v-for="s in skillType" :key="s" :type="s" :skill="skillList" />
         </div>
@@ -53,7 +57,10 @@
 
       <!-- project -->
       <div class="w-full">
-        <CardTitle :title="'Side Project'" :content="'均具備RWD響應式功能'" />
+        <CardTitle
+          :title="t('components.cardTitle.cardTitle02.title')"
+          :content="t('components.cardTitle.cardTitle02.content')"
+        />
         <div class="mx-2 pb-2 flex flex-nowrap gap-2 overflow-x-scroll">
           <ProjectCard
             class="w-[550px] min-w-[550px]"
@@ -88,7 +95,10 @@
 
       <!-- timeline -->
       <div>
-        <CardTitle :title="'Work Experience'" :content="'從手遊到醫療工程師'" />
+        <CardTitle
+          :title="t('components.cardTitle.cardTitle03.title')"
+          :content="t('components.cardTitle.cardTitle03.content')"
+        />
         <div class="mx-2 flex flex-col gap-2">
           <TimelineCard v-for="t in timelineList" :key="t.company" :timeline="t" :point="false" />
         </div>
@@ -98,7 +108,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 // store
@@ -115,10 +125,18 @@ import TimelineCard from 'src/components/TimelineCard.vue';
 import SkillCard from 'src/components/SkillCard.vue';
 // i18n
 import { useI18n } from 'vue-i18n';
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
-const projectList = ref([]);
-const timelineList = ref([]);
+const projectList = computed(() => projectStore.projectList);
+const timelineList = computed(() => timelineStore.timeLineList);
+
+watch(
+  () => locale.value,
+  () => {
+    timelineStore.getTimeLineList();
+    projectStore.getProjectList();
+  },
+);
 const skillList = ref([]);
 
 const skillType = computed(() => {
@@ -126,8 +144,6 @@ const skillType = computed(() => {
 });
 
 onMounted(() => {
-  projectList.value = projectStore.projectList;
-  timelineList.value = timelineStore.timeLineList;
   skillList.value = skillStore.skillList;
 });
 </script>

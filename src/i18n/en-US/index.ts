@@ -14,10 +14,10 @@ export default {
           third: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         },
         skill: {
-          first: 'Lorem',
-          second: 'ipsum',
-          third: 'dolor',
-          fourth: 'sit',
+          first: 'Nuxt.js',
+          second: 'Tailwind CSS',
+          third: 'Vue3',
+          fourth: 'JavaScript',
         },
         preview: {
           first: 'Lorem',
@@ -35,10 +35,10 @@ export default {
           third: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         },
         skill: {
-          first: 'Lorem',
-          second: 'ipsum',
-          third: 'dolor',
-          fourth: 'sit',
+          first: 'Vue3',
+          second: 'TypeScript',
+          third: 'Bootstrap 5',
+          fourth: 'Ant Design',
         },
         preview: {
           first: 'Lorem',
@@ -56,8 +56,8 @@ export default {
           second: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         },
         skill: {
-          first: 'Lorem',
-          second: 'ipsum',
+          first: 'JavaScript',
+          second: 'Chrome Extension',
         },
       },
     },
@@ -95,8 +95,53 @@ export default {
         },
       },
     },
+  },
+  page: {
     indexPage: {
-      title: 'Lorem ipsum',
+      title: 'Lorem ipsum dolor',
+      position: 'Lorem ipsum dolor sit amet, consectetur',
+      intro: {
+        intro01: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+        intro02: {
+          first: 'Lorem',
+          second: 'Vue3',
+          third: '／ Element Plus 、 Quasar 、 Tailwind CSS',
+        },
+        intro03: {
+          first: 'Lorem',
+          second: 'ipsum dolor',
+          third: '、sit amet、',
+          forth: 'WebSocket',
+          fifth: '、 PWA 、 Lighthouse consectetur',
+        },
+      },
+    },
+    projectInfo: {
+      whatIDid: 'What I Did',
+      technologlesUsed: 'Technologles Used',
+    },
+    projectPage: {
+      count: 'projects',
+    },
+  },
+  components: {
+    cardTitle: {
+      cardTitle01: {
+        title: 'Skill Tree',
+        content: 'Lorem ipsum dolor sit amet, consectetur',
+      },
+      cardTitle02: {
+        title: 'Side Project',
+        content: 'Lorem ipsum dolor',
+      },
+      cardTitle03: {
+        title: 'Work Experience',
+        content: 'Lorem ipsum dolor sit amet',
+      },
+      cardTitle04: {
+        title: 'Side Project',
+        content: 'Lorem ipsum dolor',
+      },
     },
   },
 };

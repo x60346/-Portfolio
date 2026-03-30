@@ -5,7 +5,10 @@
     >
       <!-- timeline -->
       <div>
-        <CardTitle :title="'Work Experience'" :content="'從手遊到醫療工程師'" />
+        <CardTitle
+          :title="t('components.cardTitle.cardTitle03.title')"
+          :content="t('components.cardTitle.cardTitle03.content')"
+        />
         <div class="mx-2 flex flex-col gap-2">
           <TimelineCard v-for="t in timelineList" :key="t.company" :timeline="t" :point="true" />
         </div>
@@ -24,7 +27,6 @@ import CardTitle from 'src/components/CardTitle.vue';
 import TimelineCard from 'src/components/TimelineCard.vue';
 // i18n
 import { useI18n } from 'vue-i18n';
-import { nextTick } from 'process';
 const { t, locale } = useI18n();
 
 const timelineList = computed(() => timelineStore.timeLineList);

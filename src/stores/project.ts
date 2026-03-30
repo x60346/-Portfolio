@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { computed } from 'vue';
 import cover01 from 'assets/project01_cover.png';
 import cover02 from 'assets/project02_cover.png';
 import cover03 from 'assets/project03_cover.png';
@@ -12,29 +13,35 @@ import preview07 from 'assets/project02_preview04.png';
 import { i18n } from 'src/boot/i18n';
 const t = i18n.global.t;
 
-const projectList = [
+const projectList = computed(() => [
   {
-    title: '藝文活動',
+    id: '01',
+    title: t('store.project.project01.title'),
     cover: cover01,
-    content: '周末覺得無聊嗎？不知道要去哪裡嗎？使用此平台，一鍵搜尋周圍所有活動，讓假期不再無聊！',
+    content: t('store.project.project01.content'),
     whatIDid: [
-      '串接文化部提供免費API，即時更新各項活動。',
-      '使用定位功能，不用再選縣市，直接找到最近的活動。',
-      '支援 Dark 模式、RWD 功能，任何時段、任何裝置都方便。',
+      t('store.project.project01.whatIDid.first'),
+      t('store.project.project01.whatIDid.second'),
+      t('store.project.project01.whatIDid.third'),
     ],
-    skill: ['Nuxt.js', 'Tailwind CSS', 'Vue3', 'JavaScript'],
+    skill: [
+      t('store.project.project01.skill.first'),
+      t('store.project.project01.skill.second'),
+      t('store.project.project01.skill.third'),
+      t('store.project.project01.skill.fourth'),
+    ],
     preview: [
       {
         src: preview01,
-        discribe: '暗色模式',
+        discribe: t('store.project.project01.preview.first'),
       },
       {
         src: preview02,
-        discribe: 'gps定位搜尋',
+        discribe: t('store.project.project01.preview.second'),
       },
       {
         src: preview03,
-        discribe: '類別搜尋',
+        discribe: t('store.project.project01.preview.third'),
       },
     ],
     github: 'https://github.com/x60346/nuxt-activity',
@@ -42,31 +49,37 @@ const projectList = [
     focus: false,
   },
   {
-    title: '飛行船甜點店',
+    id: '02',
+    title: t('store.project.project02.title'),
     cover: cover02,
-    content: '一艘跨越國境的甜點店，順著網路游過大海、飛過天空，悄悄停佇在你的網頁裡。',
+    content: t('store.project.project02.content'),
     whatIDid: [
-      '規範使用者訪問權限，區分會員／非會員功能。',
-      '簡易會員後台，方便管理訂單和優惠券。',
-      '支援 RWD ，行動裝置也能輕鬆點餐。',
+      t('store.project.project02.whatIDid.first'),
+      t('store.project.project02.whatIDid.second'),
+      t('store.project.project02.whatIDid.third'),
     ],
-    skill: ['Vue3', 'TypeScript', 'Bootstrap 5', 'Ant Design'],
+    skill: [
+      t('store.project.project02.skill.first'),
+      t('store.project.project02.skill.second'),
+      t('store.project.project02.skill.third'),
+      t('store.project.project02.skill.fourth'),
+    ],
     preview: [
       {
         src: preview04,
-        discribe: '選擇甜點',
+        discribe: t('store.project.project02.preview.first'),
       },
       {
         src: preview05,
-        discribe: '甜點介紹',
+        discribe: t('store.project.project02.preview.second'),
       },
       {
         src: preview07,
-        discribe: '甜點類別',
+        discribe: t('store.project.project02.preview.third'),
       },
       {
         src: preview06,
-        discribe: '登入',
+        discribe: t('store.project.project02.preview.fourth'),
       },
     ],
     github: 'https://github.com/x60346/cakeList',
@@ -74,29 +87,36 @@ const projectList = [
     focus: false,
   },
   {
-    title: 'Chrome 擴充功能',
+    id: '03',
+    title: t('store.project.project03.title'),
     cover: cover03,
-    content: '網頁太長，手動截圖截不完？安裝它，一鍵生成網頁快照！',
-    whatIDid: ['串接 Chrome API，取得控制網頁功能。', '拼接全畫面圖片，取得網頁快照。'],
-    skill: ['JavaScript', 'Chrome Extension'],
+    content: t('store.project.project03.content'),
+    whatIDid: [
+      t('store.project.project03.whatIDid.first'),
+      t('store.project.project03.whatIDid.second'),
+    ],
+    skill: [t('store.project.project03.skill.first'), t('store.project.project03.skill.second')],
     preview: [],
     github: 'https://github.com/x60346/chrome-extension-ex1_webscreenshot',
     demo: '',
     focus: false,
   },
-];
+]);
 
 export const useProjectStore = defineStore('project', {
   state: () => ({
-    projectList: JSON.parse(JSON.stringify(projectList)),
+    projectList: JSON.parse(JSON.stringify(projectList.value)),
   }),
   actions: {
+    getProjectList() {
+      this.projectList = JSON.parse(JSON.stringify(projectList.value));
+    },
     setProjectList(data) {
       this.projectList.push(data);
     },
-    getProjectList(title) {
+    getProject(id) {
       return this.projectList.filter((item) => {
-        return item.title === title;
+        return item.id === id;
       });
     },
     delProjectList(title) {

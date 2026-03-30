@@ -5,59 +5,57 @@ export default {
   store: {
     project: {
       project01: {
-        title: 'Lorem ipsum',
+        title: '藝文活動',
         content:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          '周末覺得無聊嗎？不知道要去哪裡嗎？使用此平台，一鍵搜尋周圍所有活動，讓假期不再無聊！',
         whatIDid: {
-          first: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-          second: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-          third: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+          first: '串接文化部提供免費API，即時更新各項活動。',
+          second: '使用定位功能，不用再選縣市，直接找到最近的活動。',
+          third: '支援 Dark 模式、RWD 功能，任何時段、任何裝置都方便。',
         },
         skill: {
-          first: 'Lorem',
-          second: 'ipsum',
-          third: 'dolor',
-          fourth: 'sit',
+          first: 'Nuxt.js',
+          second: 'Tailwind CSS',
+          third: 'Vue3',
+          fourth: 'JavaScript',
         },
         preview: {
-          first: 'Lorem',
-          second: 'ipsum',
-          third: 'dolor',
+          first: '暗色模式',
+          second: 'gps定位搜尋',
+          third: '類別搜尋',
         },
       },
       project02: {
-        title: 'Lorem ipsum',
-        content:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        title: '飛行船甜點店',
+        content: '一艘跨越國境的甜點店，順著網路游過大海、飛過天空，悄悄停佇在你的網頁裡。',
         whatIDid: {
-          first: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-          second: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-          third: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+          first: '規範使用者訪問權限，區分會員／非會員功能。',
+          second: '簡易會員後台，方便管理訂單和優惠券。',
+          third: '支援 RWD ，行動裝置也能輕鬆點餐。',
         },
         skill: {
-          first: 'Lorem',
-          second: 'ipsum',
-          third: 'dolor',
-          fourth: 'sit',
+          first: 'Vue3',
+          second: 'TypeScript',
+          third: 'Bootstrap 5',
+          fourth: 'Ant Design',
         },
         preview: {
-          first: 'Lorem',
-          second: 'ipsum',
-          third: 'dolor',
-          fourth: 'sit',
+          first: '選擇甜點',
+          second: '甜點介紹',
+          third: '甜點類別',
+          fourth: '登入',
         },
       },
       project03: {
-        title: 'Lorem ipsum',
-        content:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        title: 'Chrome 擴充功能',
+        content: '網頁太長，手動截圖截不完？安裝它，一鍵生成網頁快照！',
         whatIDid: {
-          first: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-          second: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+          first: '串接 Chrome API，取得控制網頁功能。',
+          second: '拼接全畫面圖片，取得網頁快照。',
         },
         skill: {
-          first: 'Lorem',
-          second: 'ipsum',
+          first: 'JavaScript',
+          second: 'Chrome Extension',
         },
       },
     },
@@ -100,8 +98,53 @@ export default {
         },
       },
     },
+  },
+  page: {
     indexPage: {
       title: '張宗芸 / Anita Chang',
+      position: 'Frontend Engineer / Healthcare HIS',
+      intro: {
+        intro01: '1 年以上 前端工程師 與 5 年 RWD 切版經驗，擅長團隊協作',
+        intro02: {
+          first: '使用',
+          second: 'Vue3',
+          third: '／ Element Plus 、 Quasar 、 Tailwind CSS',
+        },
+        intro03: {
+          first: '具備',
+          second: '後台會員系統',
+          third: '、簡化複雜表單、',
+          forth: 'WebSocket',
+          fifth: '、 PWA 、 Lighthouse 經歷',
+        },
+      },
+    },
+    projectInfo: {
+      whatIDid: 'What I Did',
+      technologlesUsed: 'Technologles Used',
+    },
+    projectPage: {
+      count: 'projects',
+    },
+  },
+  components: {
+    cardTitle: {
+      cardTitle01: {
+        title: 'Skill Tree',
+        content: '我在實際專案中使用過的技能與工具',
+      },
+      cardTitle02: {
+        title: 'Side Project',
+        content: '均具備RWD響應式功能',
+      },
+      cardTitle03: {
+        title: 'Work Experience',
+        content: '從手遊到醫療工程師',
+      },
+      cardTitle04: {
+        title: 'Side Project',
+        content: '點擊下方按鈕可快速篩選結果',
+      },
     },
   },
 };

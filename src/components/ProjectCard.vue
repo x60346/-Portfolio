@@ -73,7 +73,7 @@
             color="primary"
             icon-right="chevron_right"
             label="View More"
-            @click="router.push({ path: `/project/${project.title}` })"
+            @click="router.push({ path: `/project/${project.id}` })"
           />
         </div>
       </q-img>
