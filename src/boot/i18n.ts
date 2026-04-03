@@ -23,7 +23,7 @@ declare module 'vue-i18n' {
 let i18n = createI18n({});
 export default defineBoot(({ app }) => {
   i18n = createI18n<{ message: MessageSchema }, MessageLanguages>({
-    locale: 'en-US',
+    locale: 'zh-TW',
     legacy: false,
     messages,
   });
