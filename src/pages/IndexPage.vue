@@ -68,7 +68,7 @@
         />
         <div class="mx-2 pb-2 flex flex-nowrap gap-2 overflow-x-scroll">
           <ProjectCard
-            class="w-[550px] min-w-[550px]"
+            class="screen-projectCard"
             v-for="p in projectList"
             :key="p.title"
             :project="p"
@@ -160,6 +160,10 @@ onMounted(() => {
   .screen-project-skill {
     display: flex;
   }
+  .screen-projectCard {
+    width: 450px;
+    min-width: 450px;
+  }
 }
 @media screen and (max-width: 767.99px) {
   .screen-skill {
@@ -174,6 +178,10 @@ onMounted(() => {
   }
   .screen-index-name {
     margin-top: 0.5rem;
+  }
+  .screen-projectCard {
+    width: 350px;
+    min-width: 350px;
   }
 }
 </style>

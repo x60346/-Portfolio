@@ -34,6 +34,7 @@
             class="screen-header-btn py-2 px-4 flex justify-center items-center cursor-pointer relative"
             @mouseenter="changeHeaderBG('blue')"
             @mouseleave="changeHeaderBG(null)"
+            @click="toGithub"
           >
             <div
               class="absolute w-4/5 h-4/5 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-md"
@@ -54,6 +55,7 @@
             class="screen-header-btn py-2 px-4 flex justify-center items-center cursor-pointer relative"
             @mouseenter="changeHeaderBG('purple')"
             @mouseleave="changeHeaderBG(null)"
+            @click="toCakeResume"
           >
             <div
               class="absolute w-4/5 h-4/5 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-md"
@@ -183,7 +185,7 @@
           :icon="e.icon"
         ></Essential-link>
         <q-separator class="my-2" />
-        <q-item clickable>
+        <q-item clickable @click="toGithub">
           <q-item-section>
             <q-item-label class="text-lg flex flex-nowrap gap-2 items-center text-blue-6">
               <q-icon size="sm" name="fa-brands fa-github" />
@@ -191,7 +193,7 @@
             </q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable>
+        <q-item clickable @click="toCakeResume">
           <q-item-section>
             <q-item-label class="text-lg flex flex-nowrap gap-2 items-center text-purple-4">
               <q-icon size="sm" name="fa-solid fa-receipt" />
@@ -272,6 +274,15 @@ const essentialLinkList = ref([
 const headerBG = ref(null);
 const changeHeaderBG = (color) => {
   headerBG.value = color;
+};
+
+// 前往 github
+const toGithub = () => {
+  window.open('https://github.com/x60346', 'toGithub');
+};
+// 前往 cakeResume
+const toCakeResume = () => {
+  window.open('https://www.cake.me/resumes/6284b2', 'toCakeResume');
 };
 
 onMounted(() => {

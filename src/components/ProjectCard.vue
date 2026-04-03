@@ -6,10 +6,11 @@
     @mouseenter="() => (projectClone.focus = true)"
     @mouseleave="() => (projectClone.focus = false)"
   >
-    <q-card-section horizontal class="">
+    <q-card-section horizontal class="h-60">
       <!-- 圖片 -->
       <q-img
-        class="h-60 w-32 flex-shrink-0"
+        v-show="Screen.width >= 768"
+        class="h-full w-32 flex-shrink-0"
         :src="project.cover"
         :srcset="project.coverw"
         :alt="project.title"
@@ -17,7 +18,7 @@
         :fetchpriority="'high'"
       />
       <!-- 標題 & 說明文字 -->
-      <q-card-section class="card-title screen-project-gap text-2xl flex flex-col">
+      <q-card-section class="card-title screen-project-gap text-2xl flex flex-col flex-nowrap">
         <div>
           {{ project.title }}
         </div>
@@ -39,19 +40,26 @@
       </q-card-section>
     </q-card-section>
     <!-- 小視窗 - 按鈕 -->
-    <q-card-section class="phone-project-btn p-0 card-text flex">
-      <div class="btn-skill-2-sm w-1/2" aria-label="demo">
-        Demo
-        <q-icon size="sm" name="open_in_new" />
-      </div>
-      <div
-        class="btn-skill-3-sm w-1/2"
-        aria-label="view more"
+    <q-card-section class="phone-project-btn p-0 card-text flex flex-nowrap">
+      <MyBtn
+        v-if="project?.demo"
+        class="flex-1"
+        title="Demo"
+        icon="open_in_new"
+        :iconright="true"
+        btnclass="btn-skill-2-sm"
+        ariaLabel="demo"
+        @click="toDemo"
+      ></MyBtn>
+      <MyBtn
+        class="flex-1"
+        title="View More"
+        icon="chevron_right"
+        :iconright="true"
+        btnclass="btn-skill-3-sm"
+        ariaLabel="view more"
         @click="router.push({ path: `/project/${project.id}` })"
-      >
-        View More
-        <q-icon size="sm" name="chevron_right" />
-      </div>
+      ></MyBtn>
     </q-card-section>
     <q-separator />
     <!-- 技能列 -->
@@ -71,18 +79,25 @@
         :alt="project.title"
       >
         <div class="absolute-full flex flex-col flex-center backdrop-blur-md gap-4">
-          <div class="btn-skill-2 w-2/3" aria-label="demo">
-            Demo
-            <q-icon size="sm" name="open_in_new" />
-          </div>
-          <div
-            class="btn-skill-3 w-2/3"
-            aria-label="view more"
+          <MyBtn
+            v-if="project?.demo"
+            class="w-2/3"
+            title="Demo"
+            icon="open_in_new"
+            :iconright="true"
+            btnclass="btn-skill-2"
+            ariaLabel="demo"
+            @click="toDemo"
+          ></MyBtn>
+          <MyBtn
+            class="w-2/3"
+            title="View More"
+            icon="chevron_right"
+            :iconright="true"
+            btnclass="btn-skill-3"
+            ariaLabel="view more"
             @click="router.push({ path: `/project/${project.id}` })"
-          >
-            View More
-            <q-icon size="sm" name="chevron_right" />
-          </div>
+          ></MyBtn>
         </div>
       </q-img>
     </Transition>
@@ -91,15 +106,20 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useQuasar } from 'quasar';
+import { Screen, useQuasar } from 'quasar';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const $q = useQuasar();
+// component
+import MyBtn from './MyBtn.vue';
 
 const props = defineProps({
   project: Object,
 });
 const projectClone = ref(JSON.parse(JSON.stringify(props.project)));
+const toDemo = () => {
+  window.open(props.project?.demo, `demo-${props.project.title}`);
+};
 </script>
 <style lang="scss">
 .v-enter-active,
@@ -127,6 +147,9 @@ const projectClone = ref(JSON.parse(JSON.stringify(props.project)));
   .screen-project-gap {
     gap: 1rem;
   }
+  .screen-card {
+    height: 15rem;
+  }
 }
 @media screen and (max-width: 767.99px) {
   .phone-project-btn {
@@ -137,6 +160,9 @@ const projectClone = ref(JSON.parse(JSON.stringify(props.project)));
   }
   .screen-focus {
     display: none;
+  }
+  .screen-card {
+    height: 10rem;
   }
 }
 </style>

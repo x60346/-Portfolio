@@ -38,14 +38,15 @@
           class="absolute-full flex flex-col flex-center backdrop-blur-md gap-4"
           :class="{ 'bg-gray-300': !$q.dark.isActive, 'bg-grey-10': $q.dark.isActive }"
         >
-          <div
-            class="btn-skill-2 w-2/3"
-            aria-label="view more"
+          <MyBtn
+            class="w-2/3"
+            title="View More"
+            icon="chevron_right"
+            :iconright="true"
+            btnclass="btn-skill-2"
+            ariaLabel="view more"
             @click="router.push({ name: `timeline` })"
-          >
-            View More
-            <q-icon size="sm" name="chevron_right" />
-          </div>
+          ></MyBtn>
         </div>
       </div>
     </Transition>
@@ -58,6 +59,8 @@ import { useQuasar } from 'quasar';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const $q = useQuasar();
+// component
+import MyBtn from './MyBtn.vue';
 
 export interface TimelineCardProps {
   timeline: {
