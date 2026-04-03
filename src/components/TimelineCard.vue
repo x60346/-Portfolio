@@ -43,6 +43,7 @@
             icon-right="chevron_right"
             label="View More"
             @click="router.push({ name: `timeline` })"
+            aria-label="view more"
           />
         </div>
       </div>

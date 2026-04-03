@@ -10,6 +10,16 @@ import preview04 from 'assets/project02_preview01.png';
 import preview05 from 'assets/project02_preview02.png';
 import preview06 from 'assets/project02_preview03.png';
 import preview07 from 'assets/project02_preview04.png';
+import cover01w from 'assets/project01_cover.webp';
+import cover02w from 'assets/project02_cover.webp';
+import cover03w from 'assets/project03_cover.webp';
+import preview01w from 'assets/project01_preview01.webp';
+import preview02w from 'assets/project01_preview02.webp';
+import preview03w from 'assets/project01_preview03.webp';
+import preview04w from 'assets/project02_preview01.webp';
+import preview05w from 'assets/project02_preview02.webp';
+import preview06w from 'assets/project02_preview03.webp';
+import preview07w from 'assets/project02_preview04.webp';
 import { i18n } from 'src/boot/i18n';
 const t = i18n.global.t;
 
@@ -18,6 +28,7 @@ const projectList = computed(() => [
     id: '01',
     title: t('store.project.project01.title'),
     cover: cover01,
+    coverw: cover01w,
     content: t('store.project.project01.content'),
     whatIDid: [
       t('store.project.project01.whatIDid.first'),
@@ -33,14 +44,17 @@ const projectList = computed(() => [
     preview: [
       {
         src: preview01,
+        srcw: preview01w,
         discribe: t('store.project.project01.preview.first'),
       },
       {
         src: preview02,
+        srcw: preview02w,
         discribe: t('store.project.project01.preview.second'),
       },
       {
         src: preview03,
+        srcw: preview03w,
         discribe: t('store.project.project01.preview.third'),
       },
     ],
@@ -52,6 +66,7 @@ const projectList = computed(() => [
     id: '02',
     title: t('store.project.project02.title'),
     cover: cover02,
+    coverw: cover02w,
     content: t('store.project.project02.content'),
     whatIDid: [
       t('store.project.project02.whatIDid.first'),
@@ -67,18 +82,22 @@ const projectList = computed(() => [
     preview: [
       {
         src: preview04,
+        srcw: preview04w,
         discribe: t('store.project.project02.preview.first'),
       },
       {
         src: preview05,
+        srcw: preview05w,
         discribe: t('store.project.project02.preview.second'),
       },
       {
         src: preview07,
+        srcw: preview07w,
         discribe: t('store.project.project02.preview.third'),
       },
       {
         src: preview06,
+        srcw: preview06w,
         discribe: t('store.project.project02.preview.fourth'),
       },
     ],
@@ -90,6 +109,7 @@ const projectList = computed(() => [
     id: '03',
     title: t('store.project.project03.title'),
     cover: cover03,
+    coverw: cover03w,
     content: t('store.project.project03.content'),
     whatIDid: [
       t('store.project.project03.whatIDid.first'),

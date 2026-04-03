@@ -100,6 +100,7 @@
           dense
           :icon="$q.dark.isActive ? 'dark_mode' : 'light_mode'"
           @click="toggleDarkMode"
+          aria-label="darkmode"
         >
           <q-tooltip class="text-body2">
             {{ $q.dark.isActive ? 'Lightmode' : 'Darkmode' }}
@@ -107,19 +108,21 @@
         </q-btn>
       </q-toolbar>
       <q-toolbar class="subtitle rounded-b-sm">
-        <q-toolbar-title class="screen-header-subtoolbar mx-auto max-w-[1024px] flex">
-          <Essential-link
-            v-for="e in essentialLinkList"
-            :key="e.link"
-            :title="e.title"
-            :link="e.link"
-            :icon="e.icon"
-          ></Essential-link>
+        <q-toolbar-title class="screen-header-subtoolbar mx-auto max-w-[1024px]">
+          <q-list class="flex">
+            <Essential-link
+              v-for="e in essentialLinkList"
+              :key="e.link"
+              :title="e.title"
+              :link="e.link"
+              :icon="e.icon"
+            ></Essential-link>
+          </q-list>
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
+    <!-- <q-drawer
       v-if="Screen.width < 768"
       class="mydrawer phone-header-btn"
       v-model="rightDrawerOpen"
@@ -176,16 +179,8 @@
             </q-item-label>
           </q-item-section>
         </q-item>
-
-        <!-- <Essential-link
-          v-for="e in essentialLinkList"
-          :key="e.link"
-          :title="e.title"
-          :link="e.link"
-          :icon="e.icon"
-        ></Essential-link> -->
       </q-list>
-    </q-drawer>
+    </q-drawer> -->
 
     <q-page-container>
       <router-view class="pb-8" />

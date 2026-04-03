@@ -3,7 +3,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+* {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  font-display: swap;
+}
 .body--light {
   .Bg-brown-1 {
     background-color: $brown-1;

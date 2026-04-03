@@ -14,6 +14,7 @@
               icon="chevron_left"
               label="Back"
               @click="router.back()"
+              aria-label="go back"
             />
           </q-card-section>
           <q-card-section class="pb-2">
@@ -61,6 +62,7 @@
                     rounded
                     color="primary"
                     :label="s"
+                    :aria-label="`skills-${s}`"
                   />
                 </q-card-section>
               </div>
@@ -80,6 +82,7 @@
                   icon-right="open_in_new"
                   label="Github"
                   @click="toGithub"
+                  aria-label="github"
                 />
                 <q-btn
                   v-show="project.demo"
@@ -89,6 +92,7 @@
                   icon-right="open_in_new"
                   label="Demo"
                   @click="toDemo"
+                  aria-label="demo"
                 />
               </div>
             </q-card-section>
@@ -96,7 +100,14 @@
           <div class="screen-preview grid gap-2">
             <q-card v-for="p in project.preview" :key="p.discribe" flat>
               <q-card-section class="">
-                <q-img class="h-56" :src="p.src" loading="lazy"> </q-img>
+                <q-img
+                  class="h-56"
+                  :src="p.src"
+                  loading="lazy"
+                  :srcset="p.srcw"
+                  :alt="project.title"
+                >
+                </q-img>
                 <q-card-section class="card-text pb-0 px-0 text-base font-normal">
                   {{ p.discribe }}
                 </q-card-section>
@@ -126,12 +137,14 @@ const project = ref({
   id: '',
   title: '',
   cover: '',
+  coverw: '',
   content: '',
   whatIDid: [''],
   skill: [''],
   preview: [
     {
       src: '',
+      srcw: '',
       discribe: '',
     },
   ],

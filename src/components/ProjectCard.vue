@@ -8,8 +8,14 @@
   >
     <q-card-section horizontal class="">
       <!-- 圖片 -->
-      <q-img class="h-60 min-w-32 max-w-56 overflow-hidden" :src="project.cover" loading="lazy">
-      </q-img>
+      <q-img
+        class="h-60 w-32 flex-shrink-0"
+        :src="project.cover"
+        :srcset="project.coverw"
+        :alt="project.title"
+        loading="eager"
+        :fetchpriority="'high'"
+      />
       <!-- 標題 & 說明文字 -->
       <q-card-section class="card-title screen-project-gap text-2xl flex flex-col">
         <div>
@@ -25,6 +31,7 @@
             size="sm"
             color="primary"
             :label="s"
+            :aria-label="`skills-${s}`"
           />
         </div>
 
@@ -41,13 +48,28 @@
         color="primary"
         icon-right="open_in_new"
         label="Demo"
+        aria-label="demo"
       />
-      <q-btn class="w-1/2 rounded-none" outline color="primary" label="View More" />
+      <q-btn
+        class="w-1/2 rounded-none"
+        outline
+        color="primary"
+        label="View More"
+        aria-label="view more"
+      />
     </q-card-section>
     <q-separator />
     <!-- 技能列 -->
     <q-card-section class="screen-project-skill card-text flex gap-2">
-      <q-btn v-for="s in project.skill" :key="s" outline rounded color="primary" :label="s" />
+      <q-btn
+        v-for="s in project.skill"
+        :key="s"
+        outline
+        rounded
+        color="primary"
+        :label="s"
+        :aria-label="`skills-${s}`"
+      />
     </q-card-section>
 
     <!-- 滑鼠移進遮罩層 -->
@@ -56,6 +78,8 @@
         v-show="projectClone.focus"
         class="screen-focus absolute w-full h-full top-0 left-0"
         :src="project.cover"
+        :srcset="project.coverw"
+        :alt="project.title"
       >
         <div class="absolute-full flex flex-col flex-center backdrop-blur-md gap-4">
           <q-btn
@@ -65,6 +89,7 @@
             color="primary"
             icon-right="open_in_new"
             label="Demo"
+            aria-label="demo"
           />
           <q-btn
             class="w-2/3"
@@ -74,6 +99,7 @@
             icon-right="chevron_right"
             label="View More"
             @click="router.push({ path: `/project/${project.id}` })"
+            aria-label="view more"
           />
         </div>
       </q-img>

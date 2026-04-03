@@ -22,6 +22,7 @@
                     skillList.forEach((item) => (item.select = false));
                   }
                 "
+                aria-label="clear"
               />
               <q-btn
                 v-for="s in skillList"
@@ -36,6 +37,7 @@
                     s.select = !s.select;
                   }
                 "
+                :aria-label="`skills-${s}`"
               />
             </q-card-section>
           </q-card>
