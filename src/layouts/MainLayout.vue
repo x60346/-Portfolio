@@ -2,24 +2,28 @@
   <q-layout :view="'hHh LpR lFr'" class="Bg-brown-1">
     <q-header
       elevated
-      class="header pt-2 overflow-hidden backdrop-blur-md"
+      class="pt-2 overflow-hidden backdrop-blur-md"
       :class="{
         'bg-emerald-100': headerBG === 'green' && !$q.dark.isActive,
         'bg-blue-100': headerBG === 'blue' && !$q.dark.isActive,
-        'bg-orange-100': headerBG === 'orange' && !$q.dark.isActive,
+        'bg-purple-100': headerBG === 'purple' && !$q.dark.isActive,
         'bg-transparent': headerBG === null && !$q.dark.isActive,
         'bg-black': $q.dark.isActive,
       }"
     >
-      <q-toolbar class="mx-auto max-w-[1024px]">
+      <q-toolbar class="label mx-auto max-w-[1024px]">
         <q-toolbar-title class="flex gap-2 flex-nowrap">
           <div
-            class="screen-header-btn title py-2 px-8 rounded-t-md text-sm flex items-center gap-6 cursor-pointer border-r-2 border-green-800"
+            class="screen-header-btn title py-2 px-8 rounded-t-md text-sm flex items-center gap-6 cursor-pointer"
             @mouseenter="changeHeaderBG('green')"
             @mouseleave="changeHeaderBG(null)"
           >
             <div>
-              <q-icon color="green-10" size="sm" name="fa-solid fa-house" />
+              <q-icon
+                :color="$q.dark.isActive ? 'teal-5' : 'teal-8'"
+                size="sm"
+                name="fa-solid fa-user"
+              />
             </div>
             <div class="screen-header-btn">
               <div class="mb-[-4px] text-base font-bold">張宗芸 / Anita Chang</div>
@@ -39,23 +43,31 @@
                 'opacity-50': headerBG === 'blue',
               }"
             ></div>
-            <q-icon color="blue-8" size="md" name="fa-brands fa-github" />
+            <q-icon
+              :color="$q.dark.isActive ? 'blue-4' : 'blue-6'"
+              size="md"
+              name="fa-brands fa-github"
+            />
             <q-tooltip class="text-body2"> Github </q-tooltip>
           </div>
           <div
             class="screen-header-btn py-2 px-4 flex justify-center items-center cursor-pointer relative"
-            @mouseenter="changeHeaderBG('orange')"
+            @mouseenter="changeHeaderBG('purple')"
             @mouseleave="changeHeaderBG(null)"
           >
             <div
               class="absolute w-4/5 h-4/5 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-md"
               :class="{
-                'bg-gray-600': headerBG === 'orange' && $q.dark.isActive,
-                'bg-gray-50': headerBG === 'orange' && !$q.dark.isActive,
-                'opacity-50': headerBG === 'orange',
+                'bg-gray-600': headerBG === 'purple' && $q.dark.isActive,
+                'bg-gray-50': headerBG === 'purple' && !$q.dark.isActive,
+                'opacity-50': headerBG === 'purple',
               }"
             ></div>
-            <q-icon color="orange-8" size="md" name="fa-solid fa-receipt" />
+            <q-icon
+              :color="$q.dark.isActive ? 'purple-4' : 'purple-5'"
+              size="md"
+              name="fa-solid fa-receipt"
+            />
             <q-tooltip class="text-body2"> Cake </q-tooltip>
           </div>
 
@@ -107,7 +119,7 @@
           </q-tooltip>
         </q-btn>
       </q-toolbar>
-      <q-toolbar class="subtitle rounded-b-sm">
+      <q-toolbar class="header screen-header-btn subtitle rounded-b-sm">
         <q-toolbar-title class="screen-header-subtoolbar mx-auto max-w-[1024px]">
           <q-list class="flex">
             <Essential-link
@@ -122,7 +134,7 @@
       </q-toolbar>
     </q-header>
 
-    <!-- <q-drawer
+    <q-drawer
       v-if="Screen.width < 768"
       class="mydrawer phone-header-btn"
       v-model="rightDrawerOpen"
@@ -163,24 +175,32 @@
             </q-tooltip>
           </q-btn>
         </q-item-label>
+        <Essential-link
+          v-for="e in essentialLinkList"
+          :key="e.link"
+          :title="e.title"
+          :link="e.link"
+          :icon="e.icon"
+        ></Essential-link>
+        <q-separator class="my-2" />
         <q-item clickable>
           <q-item-section>
-            <q-item-label class="text-lg flex flex-nowrap gap-2 items-center">
-              <q-icon color="blue-8" size="sm" name="fa-brands fa-github" />
+            <q-item-label class="text-lg flex flex-nowrap gap-2 items-center text-blue-6">
+              <q-icon size="sm" name="fa-brands fa-github" />
               <div class="">Github</div>
             </q-item-label>
           </q-item-section>
         </q-item>
         <q-item clickable>
           <q-item-section>
-            <q-item-label class="text-lg flex flex-nowrap gap-2 items-center">
-              <q-icon color="orange-8" size="sm" name="fa-solid fa-receipt" />
+            <q-item-label class="text-lg flex flex-nowrap gap-2 items-center text-purple-4">
+              <q-icon size="sm" name="fa-solid fa-receipt" />
               <div class="">Cake Resume</div>
             </q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
-    </q-drawer> -->
+    </q-drawer>
 
     <q-page-container>
       <router-view class="pb-8" />

@@ -23,16 +23,14 @@
         </div>
         <!-- 小視窗 - 技能 -->
         <div class="phone-project-btn my-2 flex gap-2">
-          <q-btn
+          <div
+            class="btn-skill-1-sm"
             v-for="s in project.skill"
             :key="s"
-            outline
-            rounded
-            size="sm"
-            color="primary"
-            :label="s"
             :aria-label="`skills-${s}`"
-          />
+          >
+            {{ s }}
+          </div>
         </div>
 
         <div class="card-text text-base font-normal line-clamp-3">
@@ -42,34 +40,25 @@
     </q-card-section>
     <!-- 小視窗 - 按鈕 -->
     <q-card-section class="phone-project-btn p-0 card-text flex">
-      <q-btn
-        class="w-1/2 rounded-none"
-        unelevated
-        color="primary"
-        icon-right="open_in_new"
-        label="Demo"
-        aria-label="demo"
-      />
-      <q-btn
-        class="w-1/2 rounded-none"
-        outline
-        color="primary"
-        label="View More"
+      <div class="btn-skill-2-sm w-1/2" aria-label="demo">
+        Demo
+        <q-icon size="sm" name="open_in_new" />
+      </div>
+      <div
+        class="btn-skill-3-sm w-1/2"
         aria-label="view more"
-      />
+        @click="router.push({ path: `/project/${project.id}` })"
+      >
+        View More
+        <q-icon size="sm" name="chevron_right" />
+      </div>
     </q-card-section>
     <q-separator />
     <!-- 技能列 -->
     <q-card-section class="screen-project-skill card-text flex gap-2">
-      <q-btn
-        v-for="s in project.skill"
-        :key="s"
-        outline
-        rounded
-        color="primary"
-        :label="s"
-        :aria-label="`skills-${s}`"
-      />
+      <div class="btn-skill-1" v-for="s in project.skill" :key="s">
+        {{ s }}
+      </div>
     </q-card-section>
 
     <!-- 滑鼠移進遮罩層 -->
@@ -82,25 +71,18 @@
         :alt="project.title"
       >
         <div class="absolute-full flex flex-col flex-center backdrop-blur-md gap-4">
-          <q-btn
-            class="w-2/3"
-            unelevated
-            rounded
-            color="primary"
-            icon-right="open_in_new"
-            label="Demo"
-            aria-label="demo"
-          />
-          <q-btn
-            class="w-2/3"
-            outline
-            rounded
-            color="primary"
-            icon-right="chevron_right"
-            label="View More"
-            @click="router.push({ path: `/project/${project.id}` })"
+          <div class="btn-skill-2 w-2/3" aria-label="demo">
+            Demo
+            <q-icon size="sm" name="open_in_new" />
+          </div>
+          <div
+            class="btn-skill-3 w-2/3"
             aria-label="view more"
-          />
+            @click="router.push({ path: `/project/${project.id}` })"
+          >
+            View More
+            <q-icon size="sm" name="chevron_right" />
+          </div>
         </div>
       </q-img>
     </Transition>
@@ -109,8 +91,10 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { useQuasar } from 'quasar';
 import { useRouter } from 'vue-router';
 const router = useRouter();
+const $q = useQuasar();
 
 const props = defineProps({
   project: Object,

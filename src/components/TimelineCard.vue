@@ -34,17 +34,18 @@
     <!-- 滑鼠移進遮罩層 -->
     <Transition v-if="!point">
       <div v-show="timelineClone.focus" class="screen-focus absolute w-full h-full top-0 left-0">
-        <div class="absolute-full flex flex-col flex-center bg-gray-300 backdrop-blur-md gap-4">
-          <q-btn
-            class="w-2/3"
-            unelevated
-            rounded
-            color="primary"
-            icon-right="chevron_right"
-            label="View More"
-            @click="router.push({ name: `timeline` })"
+        <div
+          class="absolute-full flex flex-col flex-center backdrop-blur-md gap-4"
+          :class="{ 'bg-gray-300': !$q.dark.isActive, 'bg-grey-10': $q.dark.isActive }"
+        >
+          <div
+            class="btn-skill-2 w-2/3"
             aria-label="view more"
-          />
+            @click="router.push({ name: `timeline` })"
+          >
+            View More
+            <q-icon size="sm" name="chevron_right" />
+          </div>
         </div>
       </div>
     </Transition>
@@ -53,8 +54,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useQuasar } from 'quasar';
 import { useRouter } from 'vue-router';
 const router = useRouter();
+const $q = useQuasar();
+
 export interface TimelineCardProps {
   timeline: {
     startDate: string;

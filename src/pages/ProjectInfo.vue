@@ -6,16 +6,15 @@
       <!-- timeline -->
       <div>
         <q-card class="bg-transparent" flat>
-          <q-card-section class="pb-0">
-            <q-btn
-              unelevated
-              rounded
-              color="primary"
-              icon="chevron_left"
-              label="Back"
+          <q-card-section class="pb-0 flex">
+            <div
+              class="btn-skill-6 px-4 flex justify-center items-center gap-2"
               @click="router.back()"
               aria-label="go back"
-            />
+            >
+              <q-icon size="sm" name="chevron_left" />
+              Back
+            </div>
           </q-card-section>
           <q-card-section class="pb-2">
             <div class="card-title text-4xl">{{ project.title }}</div>
@@ -55,15 +54,14 @@
                 </q-card-section>
 
                 <q-card-section class="py-2 card-text flex gap-2">
-                  <q-btn
+                  <div
                     v-for="s in project.skill"
                     :key="s"
-                    outline
-                    rounded
-                    color="primary"
-                    :label="s"
+                    class="btn-skill-1"
                     :aria-label="`skills-${s}`"
-                  />
+                  >
+                    {{ s }}
+                  </div>
                 </q-card-section>
               </div>
             </div>
@@ -73,27 +71,24 @@
             <q-card-section class="pb-2">
               <div class="card-title text-4xl flex gap-2">
                 Preview
-                <q-btn
+                <div
                   v-show="project.github"
-                  class="ml-auto"
-                  outline
-                  rounded
-                  color="secondary"
-                  icon-right="open_in_new"
-                  label="Github"
+                  class="btn-skill-5 ml-auto flex justify-center items-center gap-2"
                   @click="toGithub"
                   aria-label="github"
-                />
-                <q-btn
+                >
+                  Github
+                  <q-icon size="sm" name="open_in_new" />
+                </div>
+                <div
                   v-show="project.demo"
-                  unelevated
-                  rounded
-                  color="primary"
-                  icon-right="open_in_new"
-                  label="Demo"
+                  class="btn-skill-6 flex justify-center items-center gap-2"
                   @click="toDemo"
                   aria-label="demo"
-                />
+                >
+                  Demo
+                  <q-icon size="sm" name="open_in_new" />
+                </div>
               </div>
             </q-card-section>
           </q-card>

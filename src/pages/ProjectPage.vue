@@ -12,33 +12,33 @@
 
           <q-card flat>
             <q-card-section class="card-text flex gap-2">
-              <q-btn
-                unelevated
-                rounded
-                color="orange"
-                label="Clear"
+              <div
+                class="btn-skill-4"
                 @click="
                   () => {
                     skillList.forEach((item) => (item.select = false));
                   }
                 "
                 aria-label="clear"
-              />
-              <q-btn
+              >
+                Clear
+              </div>
+              <div
+                :class="{
+                  'btn-skill-5': !chooseList.includes(s.label),
+                  'btn-skill-6': chooseList.includes(s.label),
+                }"
                 v-for="s in skillList"
                 :key="s.label"
-                :outline="!chooseList.includes(s.label)"
-                :unelevated="chooseList.includes(s.label)"
-                rounded
-                color="primary"
-                :label="s.label"
                 @click="
                   () => {
                     s.select = !s.select;
                   }
                 "
                 :aria-label="`skills-${s}`"
-              />
+              >
+                {{ s.label }}
+              </div>
             </q-card-section>
           </q-card>
         </div>
@@ -51,7 +51,8 @@
       <div class="w-full">
         <q-card class="bg-transparent" flat>
           <q-card-section class="card-text text-base">
-            {{ chooseProjectList.length }} {{ t('page.projectPage.count') }}
+            <span class="My-color-warning">{{ chooseProjectList.length }}</span>
+            {{ t('page.projectPage.count') }}
           </q-card-section>
         </q-card>
         <div class="screen-project mx-2 pb-2 grid gap-2">

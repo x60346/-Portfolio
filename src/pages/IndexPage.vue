@@ -16,14 +16,19 @@
 
           <q-card-section class="card-text pb-2 text-base">
             <div class="flex gap-2 items-start flex-nowrap">
-              <q-icon class="mt-1" color="orange-8" size="xs" name="fa-solid fa-check" />
+              <q-icon
+                class="mt-1"
+                :color="$q.dark.isActive ? 'warning' : 'amber-10'"
+                size="xs"
+                name="fa-solid fa-check"
+              />
               <p>{{ t('page.indexPage.intro.intro01') }}</p>
             </div>
             <div class="flex gap-2 items-start flex-nowrap">
               <q-icon class="mt-1" size="xs" name="fa-solid fa-check" />
               <p>
                 {{ t('page.indexPage.intro.intro02.first') }}
-                <span class="text-orange-600">{{ t('page.indexPage.intro.intro02.second') }}</span
+                <span class="My-color-warning">{{ t('page.indexPage.intro.intro02.second') }}</span
                 >{{ t('page.indexPage.intro.intro02.third') }}
               </p>
             </div>
@@ -31,9 +36,9 @@
               <q-icon class="mt-1" size="xs" name="fa-solid fa-check" />
               <p>
                 {{ t('page.indexPage.intro.intro03.first') }}
-                <span class="text-orange-600">{{ t('page.indexPage.intro.intro03.second') }}</span>
+                <span class="My-color-warning">{{ t('page.indexPage.intro.intro03.second') }}</span>
                 {{ t('page.indexPage.intro.intro03.third') }}
-                <span class="text-orange-600">{{ t('page.indexPage.intro.intro03.forth') }}</span>
+                <span class="My-color-warning">{{ t('page.indexPage.intro.intro03.forth') }}</span>
                 {{ t('page.indexPage.intro.intro03.fifth') }}
               </p>
             </div>
@@ -68,28 +73,6 @@
             :key="p.title"
             :project="p"
           ></ProjectCard>
-          <!-- <q-card flat class="min-w-[700px]">
-            <q-card-section class="pb-2">
-              <div class="card-title text-2xl">Basic</div>
-            </q-card-section>
-            <q-card-section class="card-text pt-0 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consequat velit eget
-              velit elementum, at eleifend odio viverra. Fusce eleifend ullamcorper turpis eu
-              viverra. Donec quis sodales enim, at ultrices lacus. Morbi hendrerit, nunc a lobortis
-              aliquam, ex lacus dapibus nisl, sit amet sodales dolor ante et neque. Nam ut massa mi.
-            </q-card-section>
-            <q-card-section class="pt-0 card-text flex gap-2">
-              <q-btn v-for="s in skillList" :key="s" outline rounded color="primary" :label="s" />
-              <q-btn
-                class="ml-auto"
-                unelevated
-                rounded
-                color="primary"
-                label="View Details"
-                icon-right="chevron_right"
-              />
-            </q-card-section>
-          </q-card> -->
         </div>
       </div>
 
@@ -109,6 +92,8 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
+import { useQuasar } from 'quasar';
+const $q = useQuasar();
 import { useRouter } from 'vue-router';
 const router = useRouter();
 // store

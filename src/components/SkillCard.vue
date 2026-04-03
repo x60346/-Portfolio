@@ -5,23 +5,12 @@
     </q-card-section>
     <q-card-section class="card-text pt-2 flex gap-2">
       <div
-        class="px-2 py-1 text-base border rounded border-green-700"
+        class="btn-skill-1"
         v-for="sl in skill.filter((item) => item.type === type)"
         :key="sl.name"
       >
         {{ sl.name }}
       </div>
-      <!-- <q-btn
-        v-for="sl in skill.filter((item) => item.type === type)"
-        :key="sl.name"
-        no-caps
-        outline
-        size="lg"
-        rounded
-        color="primary"
-        padding="2px 10px"
-        :label="sl.name"
-      /> -->
     </q-card-section>
   </q-card>
 </template>

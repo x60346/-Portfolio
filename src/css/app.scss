@@ -13,6 +13,149 @@
   .Bg-brown-1 {
     background-color: $brown-1;
   }
+  .btn-skill-1 {
+    border-color: $teal-3;
+    background-color: $teal-1;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-width: 1px;
+    border-radius: 0.25rem;
+  }
+  .btn-skill-1-sm {
+    border-color: $teal-3;
+    background-color: $teal-1;
+    padding: 0.1rem 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-width: 1px;
+    border-radius: 0.25rem;
+    font-size: small;
+  }
+  .btn-skill-2 {
+    border-color: $teal-5;
+    border-width: 2px;
+    background-color: $teal-5;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-radius: 10rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: large;
+    color: white;
+    font-weight: bold;
+    &:hover {
+      background-color: $teal-4;
+      border-color: $teal-4;
+    }
+  }
+  .btn-skill-2-sm {
+    border-color: $teal-5;
+    border-width: 2px;
+    background-color: $teal-5;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-radius: 0rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: large;
+    color: white;
+    font-weight: bold;
+    &:hover {
+      background-color: $teal-4;
+      border-color: $teal-4;
+    }
+  }
+  .btn-skill-3 {
+    border-color: $teal-4;
+    border-width: 2px;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-radius: 10rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: large;
+    color: $teal-5;
+    font-weight: bold;
+    &:hover {
+      background-color: $blue-grey-1;
+    }
+  }
+  .btn-skill-3-sm {
+    border-color: $teal-4;
+    border-width: 1px;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-radius: 0rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: large;
+    color: $teal-5;
+    font-weight: bold;
+    &:hover {
+      background-color: $blue-grey-1;
+    }
+  }
+  .btn-skill-4 {
+    border-color: $amber-10;
+    color: $amber-10;
+    font-weight: bold;
+    background-color: transparent;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-width: 1px;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    &:hover {
+      background-color: $grey-2;
+    }
+  }
+  .btn-skill-5 {
+    border-color: $teal-5;
+    background-color: transparent;
+    padding: 0.25rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-width: 1px;
+    border-radius: 10rem;
+    cursor: pointer;
+    &:hover {
+      background-color: $grey-2;
+    }
+  }
+  .btn-skill-6 {
+    border-color: $teal-5;
+    color: white;
+    background-color: $teal-5;
+    padding: 0.25rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-width: 1px;
+    border-radius: 10rem;
+    cursor: pointer;
+    &:hover {
+      background-color: $teal-4;
+    }
+  }
   .mydrawer {
     background-color: white;
     color: $teal-10;
@@ -23,11 +166,14 @@
   .subtitle {
     background-color: white;
   }
+  .label {
+    color: $teal-8;
+  }
   .header {
-    color: $teal-10;
+    color: $teal-8;
   }
   .card-title {
-    color: $teal-10;
+    color: $teal-8;
     font-weight: bold;
   }
   .card-subtitle {
@@ -37,10 +183,101 @@
   .card-text {
     color: $teal-10;
   }
+  .My-color-warning {
+    color: $amber-10;
+    font-weight: bold;
+  }
 }
+
 .body--dark {
   .Bg-brown-1 {
     background-color: black;
+  }
+  .btn-skill-1 {
+    border-color: $teal-4;
+    background-color: $dark;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-width: 1px;
+    border-radius: 0.25rem;
+  }
+  .btn-skill-2 {
+    border-color: $teal-4;
+    background-color: $dark;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-width: 2px;
+    border-radius: 10rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: large;
+    &:hover {
+      background-color: $blue-grey-10;
+    }
+  }
+  .btn-skill-3 {
+    background-color: $dark;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-width: 1px;
+    border-radius: 10rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: large;
+    &:hover {
+      background-color: $blue-grey-10;
+    }
+  }
+  .btn-skill-4 {
+    border-color: $warning;
+    color: $warning;
+    background-color: $dark;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-width: 1px;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    &:hover {
+      background-color: $grey-9;
+    }
+  }
+  .btn-skill-5 {
+    border-color: $teal-5;
+    color: white;
+    background-color: $dark;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-width: 1px;
+    border-radius: 10rem;
+    cursor: pointer;
+    &:hover {
+      background-color: $grey-9;
+    }
+  }
+  .btn-skill-6 {
+    border-color: $teal-5;
+    color: white;
+    background-color: $teal-5;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-width: 1px;
+    border-radius: 10rem;
+    cursor: pointer;
+    &:hover {
+      background-color: $teal-4;
+    }
   }
   .mydrawer {
     background-color: black;
@@ -48,16 +285,23 @@
   }
   .title {
     background-color: #1d1d1d;
-    border: 1px solid $green-10;
+    border: 1px solid $teal-5;
     border-bottom: 0;
+    overflow: hidden;
   }
   .subtitle {
     background-color: #1d1d1d;
     // border: 1px solid $green-10;
     // border-width: 1px 0;
   }
+  .label {
+    color: white;
+  }
   .header {
     color: white;
+  }
+  .My-color-warning {
+    color: $warning;
   }
 }
 
